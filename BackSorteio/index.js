@@ -72,24 +72,18 @@ app.post('/addrows', async (req, res)=>{
 
     const { values } = req.body
 
-    const resource = {
-        values: values,
-      };
-    
-
-    console.log( values)
 
     postRows = await googleSheets.spreadsheets.values.append({
         auth,
         spreadsheetId,
         range: 'config',
-        valueRenderOption: 'USER_ENTERED',
+        valueInputOption: 'USER_ENTERED',
             resource: {
                 values: values,
             }
     });
 
-    res.send(getRows.data);
+    res.send(postRows.data);
 
 });
 
