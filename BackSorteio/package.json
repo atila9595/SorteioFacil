@@ -1,0 +1,18 @@
+{
+  "name": "backsorteio",
+  "version": "1.0.0",
+  "description": "sorteio facil!",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@googleapis/docs": "^3.0.2",
+    "express": "^4.19.2",
+    "googleapis": "^137.1.0",
+    "nodemon": "^3.1.0"
+  }
+}
