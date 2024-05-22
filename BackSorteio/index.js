@@ -3,6 +3,7 @@ const { google } = require('googleapis');
 
 
 const app = express();
+app.use(express.json());
 
 async function getAuthSheets(){
 
@@ -45,7 +46,51 @@ app.get('/metadata', async (req, res)=>{
 })
 
 app.get('/', (req, res)=> {
+
     res.send('hello');
+});
+
+app.get('/getrows', async (req, res)=>{
+
+    const { googleSheets, auth, spreadsheetId } = await getAuthSheets();
+
+    getRows = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: 'config',
+        valueRenderOption: 'UNFORMATTED_VALUE',
+        dateTimeRenderOption: 'FORMATTED_STRING',
+    });
+
+    res.send(getRows.data);
+
+});
+
+app.post('/addrows', async (req, res)=>{
+
+    const { googleSheets, auth, spreadsheetId } = await getAuthSheets();
+
+    const { values } = req.body
+
+    const resource = {
+        values: values,
+      };
+    
+
+    console.log( values)
+
+    postRows = await googleSheets.spreadsheets.values.append({
+        auth,
+        spreadsheetId,
+        range: 'config',
+        valueRenderOption: 'USER_ENTERED',
+            resource: {
+                values: values,
+            }
+    });
+
+    res.send(getRows.data);
+
 });
 
 const port = 3000;
