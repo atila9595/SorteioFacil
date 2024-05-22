@@ -87,6 +87,28 @@ app.post('/addrows', async (req, res)=>{
 
 });
 
+app.post('/updatevalue', async (req, res)=>{
+
+    const { googleSheets, auth, spreadsheetId } = await getAuthSheets();
+
+    const { values } = req.body
+
+
+    updateVelues = await googleSheets.spreadsheets.values.update({
+        auth,
+        spreadsheetId,
+        range: 'config',
+        valueInputOption: 'USER_ENTERED',
+            resource: {
+                values: values,
+            }
+    });
+
+    res.send(updateVelues.data);
+
+});
+
+
 const port = 3000;
 app.listen(port, () =>{
     console.log('servidor rodando!')
