@@ -1,24 +1,27 @@
+import { Link } from "react-router-dom";
+
 export default function NavBar() {
 
     return (
         <>
             <div>
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <div class="container-fluid">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
+                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                    <div className="container-fluid">
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
                         </button>
-                        <a class="navbar-brand" href="#">Navbar</a>
-                        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        
+                        <div className="navbar-brand" ><Link to="/">Numero</Link></div>
+                        <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
+                            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li className="nav-item">
+                                    <div className="nav-link active" aria-current="page" ><Link to="/informacao">Informação</Link></div>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Link</a>
+                                <li className="nav-item">
+                                    <div className="nav-link" ><Link to="/contato">Informação</Link></div>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                                <li className="nav-item">
+                                    <div className="nav-link disabled" tabIndex="-1" aria-disabled="true">Disabled</div>
                                 </li>
                             </ul>
 
